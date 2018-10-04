@@ -24,6 +24,8 @@ COPY --chown=GoldSource:root ./amxmodx/amxmodx_ll-config /app/cstrike/addons/amx
 
 COPY --chown=GoldSource:root ./dist /app
 
+COPY --chown=GoldSource:root ./ll-tests /app/ll-tests
+
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l CStrike GoldSource &&`
     chmod +x /app/ll-tests/*.sh &&`

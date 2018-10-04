@@ -15,7 +15,7 @@
         {
             "label": "Build & Execute Self Tests",
             "type": "shell",
-            "command": "docker run -it --rm ll/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh;",
+            "command": "docker run -it --rm lltest/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh;",
             "dependsOn": "build-image",
             "group": {
                 "kind": "build",
