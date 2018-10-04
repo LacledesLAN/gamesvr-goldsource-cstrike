@@ -4,12 +4,14 @@ This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its c
 
 ## Linux
 
-<< TODO BADGES >>
+[![Build Status](https://travis-ci.org/LacledesLAN/gamesvr-goldsource-cstrike.svg?branch=master)](https://travis-ci.org/LacledesLAN/gamesvr-goldsource-cstrike)
+[![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-goldsource-cstrike.svg)](https://microbadger.com/images/lacledeslan/gamesvr-goldsource-cstrike "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-goldsource-cstrike.svg)](https://microbadger.com/images/lacledeslan/gamesvr-goldsource-cstrike "Get your own image badge on microbadger.com")
 
 ### Download
 
 ```shell
-TODO
+docker pull lacledeslan/gamesvr-goldsource-cstrike;
 ```
 
 ### Run Self Tests
@@ -17,13 +19,13 @@ TODO
 The image includes a test script that can be used to verify its contents. No changes or pull-requests will be accepted to this repository if any tests fail.
 
 ```shell
-TODO
+docker run -it --rm lacledeslan/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh;
 ```
 
 ### Run Interactive Server
 
 ```shell
-TODO
+docker run -it --net=host lacledeslan/gamesvr-goldsource-cstrike ./hlds_run -game cstrike +sv_lan 1 +map de_dust2 +maxplayers 16;
 ```
 
 ## Getting Started with Game Servers in Docker

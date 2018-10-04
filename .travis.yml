@@ -18,6 +18,10 @@ script:
   - docker build --no-cache --tag lltest/gamesvr-goldsource-cstrike --tag lacledeslan/gamesvr-goldsource-cstrike --build-arg BUILDNODE=TravisCI --build-arg SOURCE_COMMIT="$TRAVIS_COMMIT" -f Dockerfile.linux .
   - docker run -it --rm lltest/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh
 
+notifications:
+  slack:
+    secure: plRENScbQaD2yUSxar16Q/05AOye23I3W1JzqnqFfyadme44z56lvMAhuw6aWESH9QtsC6QFVBfad1ScTKTRKxWQEYBvDo8p82nKFxTpnhr7vKfPerBZJyFp8f6yqy27plo/SuFwblflUdII2vsDrvQmB0ICp0U3SJIR/u9BRNAJUwcobRnqikovV0aNWVjhtJqIR5iHh/j5qzK12nqowuzRjTkBloxZIGINAp4SoaxE+e9mwx/Ku/zK/QHkvyRCr9X9Cyps6wxWnquNbkFyUTBEOd+J7GzlDTqcTZ8o1aG/QlgSYaWDp4NZgGtL/f1Pj75BzMtCgRvPjFoJ9kj66CF8CKB6QS9fgjcBY3eWBf2+EOVOJZiws50vNg6PnkTAQiE05HRNDD+waEbnGLfUS7R2UJO6yDTedeMZzlKJUAQiBvrhoQ+445mSvnXfy3xjRY4v58QSK6GtTVoKyDfHyhIfJM0Ro51kJ5d6/+bov0RGujS8PIKbFSv/d2GbKxZ6PBd6a6Mrz4lCgZfPcI3cwq7qa6gZomwLGqWKiNofoYpmTybRdo+++iTqFpEf0dA+YUI1/IhUiRmOZkKj5uSNUph9mTIF8DNE1ycXnuQY9u5oP/TIzspVeP3ND4/y75ZgFvx/O6r8lrLX1czomZHSDt1/KUyHdCr4yXNBsId/Sys=
+
 before_deploy:
   - echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin;
 deploy:
@@ -25,3 +29,5 @@ deploy:
   script: docker push lacledeslan/gamesvr-goldsource-cstrike
   on:
     branch: master
+after_deploy:
+ - curl -X POST https://hooks.microbadger.com/images/lacledeslan/gamesvr-dods-freeplay/$MICROBADGER_TOKEN
