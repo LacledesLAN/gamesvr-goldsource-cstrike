@@ -1,0 +1,27 @@
+sudo: required
+os: linux
+language: minimal
+addons:
+  apt:
+    packages:
+    - docker-ce
+git:
+  depth: 4
+services:
+  - docker
+
+before_install:
+  - docker pull lacledeslan/gamesvr-goldsource
+
+script:
+  - docker version
+  - docker build --no-cache --tag lltest/gamesvr-goldsource-cstrike --tag lacledeslan/gamesvr-goldsource-cstrike --build-arg BUILDNODE=TravisCI --build-arg SOURCE_COMMIT="$TRAVIS_COMMIT" -f Dockerfile.linux .
+  - docker run -it --rm lltest/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh
+
+before_deploy:
+  - echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin;
+deploy:
+  provider: script
+  script: docker push lacledeslan/gamesvr-goldsource-cstrike
+  on:
+    branch: master
