@@ -29,7 +29,7 @@ COPY --chown=GoldSource:root ./ll-tests /app/ll-tests
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l CStrike GoldSource &&`
     chmod +x /app/ll-tests/*.sh &&`
-    mkdir -p /app/hl2mp/logs;
+    mkdir -p /app/cstrike/logs;
 
 USER CStrike
 
