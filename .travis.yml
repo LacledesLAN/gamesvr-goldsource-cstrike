@@ -15,7 +15,7 @@ before_install:
 
 script:
   - docker version
-  - docker build --no-cache --tag lltest/gamesvr-goldsource-cstrike --tag lacledeslan/gamesvr-goldsource-cstrike --build-arg BUILDNODE=TravisCI --build-arg SOURCE_COMMIT="$TRAVIS_COMMIT" -f Dockerfile.linux .
+  - docker build --no-cache --tag lltest/gamesvr-goldsource-cstrike --tag lacledeslan/gamesvr-goldsource-cstrike --build-arg BUILDNODE=TravisCI --build-arg SOURCE_COMMIT="$TRAVIS_COMMIT" -f linux.Dockerfile .
   - docker run -it --rm lltest/gamesvr-goldsource-cstrike ./ll-tests/gamesvr-goldsource-cstrike.sh
 
 notifications:

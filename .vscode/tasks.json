@@ -6,7 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "docker pull lacledeslan/gamesvr-goldsource; docker build . -f Dockerfile.linux -t lltest/gamesvr-goldsource-cstrike --no-cache --build-arg BUILDNODE=$env:computername;",
+            "command": "docker pull lacledeslan/gamesvr-goldsource; docker build . -f linux.Dockerfile -t lltest/gamesvr-goldsource-cstrike --no-cache --build-arg BUILDNODE=$env:computername;",
             "group": "build",
             "identifier": "build-image",
             "problemMatcher": [],
@@ -27,7 +27,12 @@
         {
             "label": "Build & Run Interactive Server",
             "type": "shell",
-            "command": "docker run -it --net=host lltest/gamesvr-goldsource-cstrike ./hlds_run -game cstrike +sv_lan 1 +map de_dust2 +maxplayers 16;",
+            "linux" :{
+                "command": "docker run -it --net=host lltest/gamesvr-goldsource-cstrike ./hlds_run -game cstrike +sv_lan 0 +map de_dust2 +maxplayers 16;",
+            },
+            "windows": {
+                "command": "$IP=((Get-WmiObject -Class Win32_NetworkAdapterConfiguration | where {$_.DefaultIPGateway -ne $null}).IPAddress | select-object -first 1); docker run -it -p ${IP}:27015:27015/udp -p ${IP}:27015:27015/tcp lltest/gamesvr-goldsource-cstrike ./hlds_run -game cstrike +sv_lan 0 +map de_dust2 +maxplayers 16;"
+            },
             "dependsOn": "build-image",
             "group": "build",
             "problemMatcher": [],
