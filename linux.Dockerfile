@@ -32,6 +32,8 @@ RUN usermod -l CStrike GoldSource &&`
     mkdir -p /app/cstrike/logs &&`
     chmod 775 /app/cstrike/logs;
 
+RUN echo 10 > /app/steam_appid.txt;
+
 USER CStrike
 
 WORKDIR /app
