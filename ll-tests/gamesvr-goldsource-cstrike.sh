@@ -147,7 +147,7 @@ fi;
 ### TESTS ###########################################################################################
 # Stock cstrike 1.6 server tests
 should_lack 'Running the dedicated server as root' 'Server is not running under root';
-should_have 'Setting breakpad minidump AppID = 90' 'Steam App ID 90 is running';
+should_have 'Setting breakpad minidump AppID = 10' 'Steam App ID 10 is running';
 should_have 'Stdio (cstrike)' 'counter-strike mod loaded';
 should_have 'Metamod comes with ABSOLUTELY NO WARRANTY; for details type' 'MetaMod loaded';
 should_have 'AMX Mod X comes with ABSOLUTELY NO WARRANTY; for details type' 'AMX Mod X loaded';
