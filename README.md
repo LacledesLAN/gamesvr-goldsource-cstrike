@@ -1,12 +1,12 @@
+# Laclede's LAN Counter-Strike 1.6 Freeplay Server in Docker
+
 ![Laclede's LAN Counter-Strike 1.6 Freeplay Server](https://raw.githubusercontent.com/LacledesLAN/gamesvr-goldsource-cstrike/master/.misc/banner-goldsource-cstrike.png?token=AMNjdjmpX7JyJzBwalo76VL137u6gBerks5bvqtmwA%3D%3D "Laclede's LAN Counter-Strike 1.6 Freeplay Server")
 
 This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its contents are heavily tailored and tweaked for use at our charity LAN-Parties. For third-parties we recommend using this repo only as a reference example and then building your own using [gamesvr-goldsource](https://github.com/LacledesLAN/gamesvr-goldsource) as the base image for your customized server.
 
 ## Linux
 
-[![Build Status](https://travis-ci.org/LacledesLAN/gamesvr-goldsource-cstrike.svg?branch=master)](https://travis-ci.org/LacledesLAN/gamesvr-goldsource-cstrike)
-[![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-goldsource-cstrike.svg)](https://microbadger.com/images/lacledeslan/gamesvr-goldsource-cstrike "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-goldsource-cstrike.svg)](https://microbadger.com/images/lacledeslan/gamesvr-goldsource-cstrike "Get your own image badge on microbadger.com")
+[![linux/amd64](https://github.com/LacledesLAN/gamesvr-goldsource-cstrike/actions/workflows/build-linux-image.yml/badge.svg)](https://github.com/LacledesLAN/gamesvr-goldsource-cstrike/actions/workflows/build-linux-image.yml)
 
 ### Download
 
