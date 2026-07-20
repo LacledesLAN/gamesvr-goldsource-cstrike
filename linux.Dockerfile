@@ -1,18 +1,17 @@
-# escape=`
 FROM lacledeslan/gamesvr-goldsource
 
 HEALTHCHECK NONE
 
-ARG BUILDNODE=unspecified
-ARG SOURCE_COMMIT=unspecified
+ARG BUILD_NODE=unspecified
+ARG GIT_REVISION=unspecified
 
-LABEL com.lacledeslan.build-node=$BUILDNODE `
-      org.label-schema.schema-version="1.0" `
-      org.label-schema.url="https://github.com/LacledesLAN/README.1ST" `
-      org.label-schema.vcs-ref=$SOURCE_COMMIT `
-      org.label-schema.vendor="Laclede's LAN" `
-      org.label-schema.description="LL Counter-Strike 1.6 Dedicated Freeplay Server" `
-      org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-goldsource-cstrike"
+LABEL architecture="amd64" \
+    com.lacledeslan.build-node="$BUILD_NODE" \
+    maintainer="Laclede's LAN <contact@lacledeslan.com>" \
+    org.opencontainers.image.description="LL Counter-Strike 1.6 Dedicated Freeplay Server" \
+    org.opencontainers.image.revision="$GIT_REVISION" \
+    org.opencontainers.image.source="https://github.com/LacledesLAN/gamesvr-goldsource-cstrike" \
+    org.opencontainers.image.vendor="Laclede's LAN"
 
 COPY --chown=GoldSource:root ./amxmodx/metamod/metamod.so /app/cstrike/addons/metamod/dlls/metamod.so
 
@@ -27,9 +26,9 @@ COPY --chown=GoldSource:root ./dist /app
 COPY --chown=GoldSource:root ./ll-tests /app/ll-tests
 
 # UPDATE USERNAME & ensure permissions
-RUN usermod -l CStrike GoldSource &&`
-    chmod +x /app/ll-tests/*.sh &&`
-    mkdir -p /app/cstrike/logs &&`
+RUN usermod -l CStrike GoldSource && \
+    chmod +x /app/ll-tests/*.sh && \
+    mkdir -p /app/cstrike/logs && \
     chmod 775 /app/cstrike/logs;
 
 RUN echo 10 > /app/steam_appid.txt;
